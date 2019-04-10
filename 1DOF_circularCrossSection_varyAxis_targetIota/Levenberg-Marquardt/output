@@ -1,0 +1,203 @@
+STELLOPT Version  2.65
+  Equilibrium calculation provided by: 
+  =================================================================================
+  =========   Parallel Variational Moments Equilibrium Code (v 9.0)       =========
+  =========                (S. Hirshman, J. Whitson)                      =========
+  =========         http://vmecwiki.pppl.wikispaces.net/VMEC              =========
+  =================================================================================
+     
+ -----  Optimization  -----
+    =======VARS=======
+     DELTA(-001, 001):  Boundary Specifiction (Garabedian)
+   == Accuracy of conversion =  100.00%  ==
+    ======TARGETS=====
+     Rotational Transform
+    ==================
+    Number of Processors:            4
+    Number of Parameters:            1
+    Number of Targets:               1
+    !!!! EQUILIBRIUM RESTARTING NOT UTILIZED !!!!
+    ========Parallel Code Execution Info=======
+    Number of Processors:                       4
+    Number of Optimization Threads:            -1
+    Workers per optimizer thread:                -4
+    Number of Optimizer Threads:               4
+     OPTIMIZER: Levenberg-Mardquardt
+     NFUNC_MAX:          100
+         FTOL:     1.0000E-06
+         XTOL:     1.0000E-30
+         GTOL:     1.0000E-30
+       EPSFCN:     1.0000E-06
+          MODE:            1
+        FACTOR:    100.00000000000000     
+ Warning: more processors have been requested than the maximum (nvar) required =            1
+ ---------------------------  EQUILIBRIUM CALCULATION  ------------------------
+
+  NS =   13 NO. FOURIER MODES =   41 FTOLV =  1.000E-16 NITER =    600
+  PROCESSOR COUNT - RADIAL:    1
+
+  ITER    FSQR      FSQZ      FSQL    RAX(v=0)    DELT       WMHD
+
+    1  1.14E-04  9.45E-05  1.06E-04  1.100E+00  9.00E-01  1.2513E+04
+  200  1.89E-12  1.94E-12  1.25E-12  1.100E+00  9.00E-01  1.2511E+04
+  400  8.17E-14  8.08E-14  3.74E-14  1.100E+00  9.00E-01  1.2511E+04
+  600  1.08E-15  2.51E-16  4.49E-16  1.100E+00  9.00E-01  1.2511E+04
+
+  NS =   25 NO. FOURIER MODES =   41 FTOLV =  1.000E-12 NITER =   4000
+  PROCESSOR COUNT - RADIAL:    1
+
+  ITER    FSQR      FSQZ      FSQL    RAX(v=0)    DELT       WMHD
+
+    1  1.36E-08  7.88E-09  1.11E-10  1.100E+00  9.00E-01  1.2511E+04
+   93  8.34E-13  9.91E-13  2.94E-15  1.100E+00  9.00E-01  1.2511E+04
+
+ EXECUTION TERMINATED NORMALLY
+
+ FILE : test_opt0
+ NUMBER OF JACOBIAN RESETS =    0
+
+    TOTAL COMPUTATIONAL TIME (SEC)         4.63
+    TIME TO INPUT/OUTPUT                   0.01
+       READ IN DATA                        0.00
+       WRITE OUT DATA TO WOUT              0.01
+    TIME IN FUNCT3D                        4.57
+       BCOVAR FIELDS                       0.46
+       FOURIER TRANSFORM                   1.00
+       INVERSE FOURIER TRANSFORM           1.69
+       FORCES AND SYMMETRIZE               0.55
+       RESIDUE                             0.47
+       EQFORCE                             0.02
+ -------------------------  PARAVMEC CALCULATION DONE  -----------------------
+     ASPECT RATIO:  100.000
+             BETA:    0.000  (total)
+                      0.000  (poloidal)
+                      0.000  (toroidal)
+  TORIDAL CURRENT:   -0.350414142147E-08
+     TORIDAL FLUX:    1.000
+           VOLUME:    0.002
+     MAJOR RADIUS:    1.000
+     MINOR RADIUS:    0.010
+       AXIS FIELD:  *******
+    STORED ENERGY:    0.000000000000E+00
+
+ Beginning Levenberg-Marquardt Iterations
+ Number of Processors:    4
+
+======================================================================
+  Iteration   Processor       Chi-Sq       LM Parameter      Delta Tol
+======================================================================
+       0          0         1.7875E-02
+       1          1         1.8142E-02
+       2          1         5.2279E-05*     0.0000E+00      9.9522E+01
+       3          2         1.7679E-02      0.0000E+00      5.6032E-01
+       4          3         1.7050E-02      4.1381E+01      3.1547E-03
+       5          4         1.7871E-02      7.5264E+03      1.7761E-05
+  
+
+  new minimum =  5.228E-05  lm-par =  0.000E+00  delta-tol =  2.674E-01
+
+       1          1         6.4087E-05
+       7          1         3.9811E-05      0.0000E+00      3.4227E-02
+       8          2         2.9438E-05      0.0000E+00      6.6849E-02
+       9          3         1.3122E-05      0.0000E+00      1.3370E-01
+      10          4         3.3234E-06*     0.0000E+00      2.0055E-01
+  
+
+  new minimum =  3.323E-06  lm-par =  0.000E+00  delta-tol =  1.206E-02
+
+       1          1         6.7141E-06
+      12          1         2.0141E-07*     2.5451E-01      1.5432E-03
+      13          2         1.8883E-06      0.0000E+00      3.0140E-03
+      14          3         8.3880E-07      0.0000E+00      6.0280E-03
+      15          4         2.1532E-07      0.0000E+00      9.0420E-03
+  
+
+  new minimum =  2.014E-07  lm-par =  1.273E-01  delta-tol =  3.086E-03
+
+       1          1         1.4771E-06
+      17          1         9.4660E-09*     2.1397E-01      3.9505E-04
+      18          2         1.1498E-07      0.0000E+00      7.7159E-04
+      19          3         5.0937E-08      0.0000E+00      1.5432E-03
+      20          4         1.3406E-08      0.0000E+00      2.3148E-03
+  
+
+  new minimum =  9.466E-09  lm-par =  1.070E-01  delta-tol =  7.901E-04
+
+       1          1         7.5086E-07
+      22          1         7.7011E-09      0.0000E+00      1.0113E-04
+      23          2         5.5636E-09      0.0000E+00      1.9753E-04
+      24          3         2.4047E-09      0.0000E+00      3.9505E-04
+      25          4         7.6169E-10*     0.0000E+00      5.9258E-04
+  
+
+  new minimum =  7.617E-10  lm-par =  0.000E+00  delta-tol =  1.619E-04
+
+       1          1         6.3255E-07
+      27          1         9.4786E-11      3.8854E-01      2.0728E-05
+      28          2         3.9259E-10      0.0000E+00      4.0484E-05
+      29          3         2.1434E-10      0.0000E+00      8.0969E-05
+      30          4         6.5022E-11*     0.0000E+00      1.2145E-04
+  
+
+  new minimum =  6.502E-11  lm-par =  0.000E+00  delta-tol =  4.602E-05
+
+       1          1         6.0072E-07
+      32          1         1.0205E-11      4.2253E-01      5.8907E-06
+      33          2         1.7582E-11      0.0000E+00      1.1505E-05
+      34          3         1.8894E-11      0.0000E+00      2.3011E-05
+      35          4         6.3458E-12*     0.0000E+00      3.4516E-05
+  
+
+  new minimum =  6.346E-12  lm-par =  0.000E+00  delta-tol =  1.346E-05
+
+       1          1         5.9155E-07
+      37          1         1.2546E-12      5.0664E-01      1.7227E-06
+      38          2         1.7290E-13*     0.0000E+00      3.3647E-06
+      39          3         1.9473E-12      0.0000E+00      6.7293E-06
+      40          4         6.6533E-13      0.0000E+00      1.0094E-05
+  
+
+  new minimum =  1.729E-13  lm-par =  0.000E+00  delta-tol =  1.402E-06
+
+       1          1         5.9063E-07
+      42          1         5.4247E-12      1.2756E+00      1.7948E-07
+      43          2         8.7118E-15*     2.5694E-01      3.5055E-07
+      44          3         5.5665E-12      0.0000E+00      7.0111E-07
+      45          4         6.2468E-12      0.0000E+00      1.0517E-06
+  
+
+  new minimum =  8.712E-15  lm-par =  1.285E-01  delta-tol =  7.011E-07
+
+       1          1         5.8149E-07
+      47          1         6.8434E-12      1.3102E-01      8.9742E-08
+      48          2         3.6295E-11      0.0000E+00      1.7528E-07
+      49          3         6.6336E-12*     0.0000E+00      3.5055E-07
+      50          4         6.8298E-12      0.0000E+00      5.2583E-07
+  
+   Improving Jacobian: flipping direction
+       1          1         5.9147E-07
+      52          1         6.6161E-12      0.0000E+00      9.8453E+00
+      53          2         4.8799E-15*     0.0000E+00      1.9229E+01
+      54          3         6.7802E-12      0.0000E+00      3.8458E+01
+      55          4         6.9397E-12      0.0000E+00      5.7687E+01
+  
+
+  new minimum =  4.880E-15  lm-par =  0.000E+00  delta-tol =  4.667E-08
+
+       1          1         5.8135E-07
+      57          1         6.7150E-12      1.0611E+01      5.9736E-09
+      58          2         3.6534E-11      4.9530E+00      1.1667E-08
+      59          3         6.6170E-12      1.9851E+00      2.3334E-08
+      60          4         6.5742E-12*     9.9577E-01      3.5001E-08
+  
+   Improving Jacobian: flipping direction
+       1          1         5.9153E-07
+      62          1         6.7330E-12      0.0000E+00      9.8437E+00
+      63          2         3.5694E-15*     0.0000E+00      1.9226E+01
+      64          3         6.5955E-12      0.0000E+00      3.8452E+01
+      65          4         6.5153E-12      0.0000E+00      5.7678E+01
+  
+
+  new minimum =  3.569E-15  lm-par =  0.000E+00  delta-tol =  3.493E-08
+
+       1          1         5.8137E-07

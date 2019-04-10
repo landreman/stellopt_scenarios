@@ -1,0 +1,17 @@
+This is a minimal scenario. There is only 1 independent variable, and only a single term in the objective function.
+The only code used is VMEC. There is no current or plasma pressure, i.e. the configuration is a vacuum field.
+
+The 1 independent variable is the Garabedian Delta_{n=-1, m=1}, which controls the shape of the magnetic axis:
+R(phi) = 1 + Delta_{n=-1, m=1} * a * cos(nfp * phi),
+Z(phi) =     Delta_{n=-1, m=1} * a * sin(nfp * phi),
+where a=0.01 is the minor radius. The plasma has a circular cross-section in the (R,Z) plane (so it has a slightly elliptical cross-section
+in the plane perpendicular to the magnetic axis.)
+
+The objective function is (iota - iota_target)^2, where iota is measured on the magnetic axis,
+and iota_target = -0.41.
+
+As can be seen in plotObjectiveFunction.pdf, the objective function is smooth.
+
+There are two optima, at Delta = +/- 8.575. At these points, the objective function is 0. There are no other local optima.
+
+Even though there is only 1 degree of freedom, stellopt crashes if you try to run it using Levenberg–Marquardt with only 1 proc. I also noticed that stellopt's Levenberg–Marquardt algorithm does not converge when run with only 2 procs, but it does converge when run with 4.
