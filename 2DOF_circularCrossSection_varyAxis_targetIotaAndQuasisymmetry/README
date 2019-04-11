@@ -1,0 +1,24 @@
+This is a scenario with 2 independent variables and 2 objectives.
+There is no current or plasma pressure, i.e. the configuration is a vacuum field.
+There are 2 codes involved in computing the objective function: VMEC and BOOZ_XFORM.
+
+The 2 independent variables are RBC(1,0) and ZBS(1,0), which control the shape of the magnetic axis:
+R(phi) = 1 + RBC(1,0) * cos(nfp * phi),
+Z(phi) =     ZBS(1,0) * sin(nfp * phi).
+The plasma has a circular cross-section with radius 0.1 in the (R,Z) plane (so it has a slightly elliptical cross-section
+in the plane perpendicular to the magnetic axis.)
+
+The objective function is
+f = (iota - iota_target)^2 / sigma_iota^2 + Q^2,
+where 
+iota is the rotational transform on the magnetic axis,
+iota_target = -0.41,
+sigma_iota = 0.1,
+and Q is a measure of the departure from quasisymmetry at the VMEC boundary surface.
+
+As can be seen in plotObjectiveFunction.pdf, the objective function is fairly smooth, although there is some
+numerical noise apparent in the Q term when R0C(1,0) is small.
+The landscape of the total objective function resmbles that of the Rosenbrock function: there is a long narrow curved valley.
+
+The optimum occurs at RBC(1,0) = 0.09223 and ZBS(1,0) = 0.09449. At this point, iota = -0.409707, Q=0.17702, and the total objective function is 0.03135.
+There is a symmetric optimum at RBC(1,0) = -0.09223 and ZBS(1,0) = -0.09449. There are no other local optima.
