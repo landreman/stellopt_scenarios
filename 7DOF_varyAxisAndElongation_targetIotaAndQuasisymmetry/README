@@ -1,0 +1,73 @@
+This is a scenario with 7 independent variables, targeting both iota
+and quasisymmetry.  There is no current or plasma pressure, i.e. the
+configuration is a vacuum field.  There are 2 codes involved in
+computing the objective function: VMEC and BOOZ_XFORM.
+
+The independent variables represent the shape of the magnetic axis,
+and the toroidal variation of the minor radius, elongation, and
+rotation angle of the elliptical surfaces. The average major radius is
+fixed at 1, and the average minor radius is fixed at 0.1.
+
+More precisely, the independent variables are the Garabedian
+coefficients Delta_{n,m} for the following values of (n,m):
+
+(-1,1) and (1,1)  [Shape of the magnetic axis]
+(0,2)             [Toroidally averaged elongation]
+(-1,0) and (1,0)  [Toroidally varying minor radius]
+(-1,2) and (1,2)  [Toroidally varying elongation]
+
+The Garabedian Delta for (n,m)=(0,1) [Major radius / minor radius] is
+fixed at 10, and the (n,m)=(0,0) coefficient [average minor radius] is
+fixed at 1.
+
+The objective function is
+f = (iota - iota_target)^2 / sigma_iota^2 + Q^2,
+where 
+iota is the rotational transform on the magnetic axis,
+iota_target = -0.41,
+sigma_iota = 0.1,
+and Q is a measure of the departure from quasisymmetry at the VMEC
+boundary surface. The definition of Q in this example is different
+from the one in the
+2DOF_circularCrossSection_varyAxis_targetIotaAndQuasisymmetry
+example. Here, stellopt considers Q to be the sum of 1040 quadratic
+terms (one for each non-symmetric Fourier mode of |B| at the given
+Fourier resolution), so the number of terms is larger than the number
+of degrees of freedom (as needed by Levenberg-Mardquardt).
+
+Stellopt seems to struggle with this example, in the following
+way. The 'Levenberg-Marquardt_coldStart' subdirectory shows that when
+stellopt is initialized with a particular initial condition far from
+any optimum, by the 1719th function evaluation, it ends up at a point
+where the objective function is f=1.7613E-03; the next ~8000 function
+evaluations produce no improvement. However, when stellopt is
+restarted from the endpoint of the first optimization, it reduces f to
+1.5191E-03 already on the 15th function evaluation, and f is further
+reduced to 1.0102E-03. Restarting again, f is further reduced. I don't
+know if the issue is local minima, or perhaps resetting the
+Levenberg parameter produces a better linesearch direction for some
+reason.
+
+
+The best optimum I have found so far is as follows:
+
+f = 1.0086E-03
+
+  RBC( 000,000) =    1.000000000000E+000    ZBS( 000,000) =    0.000000000000E+000
+  RBC( 001,000) =   -9.380368462076E-003    ZBS( 001,000) =   -9.602636989978E-003
+  RBC(-001,001) =    3.242425068324E-002    ZBS(-001,001) =   -2.976176077559E-002
+  RBC( 000,001) =    9.943959510140E-002    ZBS( 000,001) =    1.005604048985E-001
+  RBC( 001,001) =   -1.569371836431E-003    ZBS( 001,001) =   -1.427580686980E-003
+
+The corresponding Garabedian coefficients are:
+           n           m      Delta_{n,m}
+------------------------------------------------
+          -1           0 -1.498476261706249E-002
+           0           0   1.00000000000000     
+           1           0  1.331244953825667E-002
+          -1           1 -9.491502726031747E-002
+           0           1   10.0000000000050     
+           1           1  1.111342639510550E-003
+          -1           2  0.310930057294306     
+           0           2 -5.604048985502819E-003
+           1           2 -7.089557472553538E-004

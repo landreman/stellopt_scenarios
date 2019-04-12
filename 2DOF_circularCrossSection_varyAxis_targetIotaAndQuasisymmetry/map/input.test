@@ -111,8 +111,9 @@ ZBS_MIN(1,0) = 0  ZBS_MAX(1,0) = 0.2
 !  TARGET_HELICITY(2) = 0.0  SIGMA_HELICITY(2) = 1.0
 !  TARGET_HELICITY(8) = 0.0  SIGMA_HELICITY(8) = 1.0
 !  TARGET_HELICITY(25) = 0.0  SIGMA_HELICITY(25) = 1.0
-!TARGET_HELICITY_OLD(2) = 0.0  SIGMA_HELICITY_OLD(2) = 1.0
+
 TARGET_HELICITY_OLD(25) = 0.0  SIGMA_HELICITY_OLD(25) = 1.0
+
 !------------------------------------------------------------------------
 !       Ballooning Stability (as calculated by COBRA_VMEC)
 !         Note that ballooning stability is by surface.  Axis (01) is ignored.
@@ -142,13 +143,6 @@ TARGET_HELICITY_OLD(25) = 0.0  SIGMA_HELICITY_OLD(25) = 1.0
 
 ! Rotational transform:
 TARGET_IOTA(001) =   -0.41000  SIGMA_IOTA(001) =   0.1000  S_IOTA(001) =   0.0000
-!TARGET_IOTA(002) =   -0.41000  SIGMA_IOTA(002) =   1.000  S_IOTA(002) =   1.0000
-
-! Elongation:
-!TARGET_KAPPA = 2.0  SIGMA_KAPPA = 1.0  PHI_KAPPA = 0.0
-
-! Terms in the objective function:
-! iota at s=0 and 1
 
 / 
 
