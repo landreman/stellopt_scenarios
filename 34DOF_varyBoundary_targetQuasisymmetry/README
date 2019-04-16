@@ -1,0 +1,7 @@
+This is a realistic optimization scenario. The main optimization is to improve quasi-symmetry while keeping the aspect ratio the same. There is also optimization for epsilon effective (neo-classical transport) but this does not contribute strongly to the optimization.
+
+The test case shows some of the limitations of the Levenberg-Marquardt algorithm. Specifically variations of the initial conditions slightly while maintaining the same targets produce different final configurations, each one lying in its own local minimum.
+
+An example of the problem is shown in figure p01_m0n1.png. The figure shows results for multiple runs where all the starting coefficients are varied with a random value less than 0.1%. Plotted is a scatter plot of values of the m=0, n=1 R and Z coefficients on the boundary. The blue values represent the starting values for these quantities. The orange values represent the penultimate value before the optimization finishes. The green is the final value. Most of the configurations are near the local minima, but a few are still moving. However, the end range of the coefficients is significantly larger than the beginning coefficients indicated non-convexity of the target function. The figure fscomp_phi0.pdf shows the end results for several of the flux surfaces, showing significant deviation of the boundary shape.
+
+
