@@ -1,0 +1,143 @@
+STELLOPT Version  2.70
+  Equilibrium calculation provided by: 
+  =================================================================================
+  =========   Parallel Variational Moments Equilibrium Code (v 9.0)       =========
+  =========                (S. Hirshman, J. Whitson)                      =========
+  =========         http://vmecwiki.pppl.wikispaces.net/VMEC              =========
+  =================================================================================
+     
+ -----  MPI Params.   -----
+    MPI Version:  3.01
+    Optimizers requested:           -1
+    Number of Processors:            4
+    Shared memory groups:            1
+    Processors per group:            4
+   Workers per optimizer:            1
+     Optimizers provided:            4
+ -----  Optimization  -----
+    =======VARS=======
+     RBC( 000, 000):  Radial Boundary Specification (COS)
+    ======TARGETS=====
+     Plasma Volume
+    ==================
+    Number of Parameters:            1
+    Number of Targets:               1
+    !!!! EQUILIBRIUM RESTARTING NOT UTILIZED !!!!
+     OPTIMIZER: Parameter Space Mapping
+          NPOP:            4
+          NDIV:    538976288
+             N:            1
+             M:            1
+         NFUNC:           30
+ ---------------------------  EQUILIBRIUM CALCULATION  ------------------------
+
+  NS =   13 NO. FOURIER MODES =   41 FTOLV =  1.000E-16 NITER =    600
+  PROCESSOR COUNT - RADIAL:    1
+ INITIAL JACOBIAN CHANGED SIGN!
+ TRYING TO IMPROVE INITIAL MAGNETIC AXIS GUESS
+  ---- Improved AXIS Guess ----
+      RAXIS_CC =   0.19999999999999998        9.9999999999999992E-002   9.8130778667735933E-018  -8.4314935248557013E-017  -9.8130778667735933E-017
+      ZAXIS_CS =   -0.0000000000000000       0.10000000000000001        8.9953213778757943E-018  -6.5420519111823952E-018   8.1775648889779939E-018
+  -----------------------------
+
+  ITER    FSQR      FSQZ      FSQL    RAX(v=0)    DELT       WMHD
+
+    1  1.75E+01  7.51E-01  1.96E+00  3.000E-01  9.00E-01  1.9180E+02
+  200  5.77E-04  4.00E-04  7.73E-06  2.487E-01  4.64E-01  1.0523E+02
+  400  2.22E-05  1.62E-05  1.67E-07  2.489E-01  4.64E-01  1.0514E+02
+  600  4.73E-06  4.72E-06  1.04E-08  2.490E-01  4.64E-01  1.0512E+02
+
+  NS =   25 NO. FOURIER MODES =   41 FTOLV =  1.000E-12 NITER =   4000
+  PROCESSOR COUNT - RADIAL:    1
+ TRYING TO IMPROVE INITIAL MAGNETIC AXIS GUESS
+  ---- Improved AXIS Guess ----
+      RAXIS_CC =   0.19111111111111112       0.13232050807568871       -2.7777777777777770E-003  -9.7662299878992988E-017   3.8888888888887834E-003
+      ZAXIS_CS =   -0.0000000000000000       0.12847150628109125       -6.7357531405456078E-003  -6.5420519111823952E-018   9.6225044864937199E-004
+  -----------------------------
+
+  ITER    FSQR      FSQZ      FSQL    RAX(v=0)    DELT       WMHD
+
+    1  8.96E+01  6.72E+00  4.12E+00  3.245E-01  9.00E-01  3.4317E+02
+  200  4.44E-04  4.17E-04  3.20E-06  2.459E-01  4.78E-01  1.0511E+02
+  400  3.13E-05  1.44E-05  8.30E-08  2.478E-01  4.78E-01  1.0502E+02
+  600  7.66E-06  2.97E-06  1.24E-08  2.482E-01  4.78E-01  1.0500E+02
+  800  2.53E-06  1.19E-06  2.23E-09  2.483E-01  4.78E-01  1.0500E+02
+ 1000  1.43E-06  3.56E-07  7.18E-10  2.483E-01  4.78E-01  1.0500E+02
+ 1200  7.68E-07  1.78E-07  2.04E-10  2.483E-01  4.78E-01  1.0500E+02
+ 1400  3.93E-07  9.75E-08  5.34E-11  2.483E-01  4.78E-01  1.0500E+02
+ 1600  1.95E-07  5.07E-08  1.94E-11  2.484E-01  4.78E-01  1.0500E+02
+ 1800  8.87E-08  2.12E-08  7.41E-12  2.484E-01  4.78E-01  1.0500E+02
+ 2000  2.78E-08  6.80E-09  1.86E-12  2.484E-01  4.78E-01  1.0500E+02
+ 2200  6.44E-09  1.96E-09  1.53E-12  2.484E-01  4.78E-01  1.0500E+02
+ 2400  1.31E-09  4.87E-10  5.78E-13  2.484E-01  4.78E-01  1.0500E+02
+ 2600  2.54E-10  9.31E-11  1.30E-13  2.484E-01  4.78E-01  1.0500E+02
+ 2800  6.54E-11  1.61E-11  2.10E-14  2.484E-01  4.78E-01  1.0500E+02
+ 3000  1.97E-11  4.00E-12  2.65E-15  2.484E-01  4.78E-01  1.0500E+02
+ 3200  8.76E-12  2.14E-12  1.14E-15  2.484E-01  4.78E-01  1.0500E+02
+ 3400  4.43E-12  1.42E-12  7.35E-16  2.484E-01  4.78E-01  1.0500E+02
+ 3600  1.21E-12  4.32E-13  3.15E-16  2.484E-01  4.78E-01  1.0500E+02
+ 3623  1.00E-12  3.66E-13  2.77E-16  2.484E-01  4.78E-01  1.0500E+02
+
+ EXECUTION TERMINATED NORMALLY
+
+ FILE : test_opt0
+ NUMBER OF JACOBIAN RESETS =    7
+
+    TOTAL COMPUTATIONAL TIME (SEC)        46.40
+    TIME TO INPUT/OUTPUT                   0.03
+       READ IN DATA                        0.00
+       WRITE OUT DATA TO WOUT              0.03
+    TIME IN FUNCT3D                       46.18
+       BCOVAR FIELDS                       4.87
+       FOURIER TRANSFORM                  10.30
+       INVERSE FOURIER TRANSFORM          16.73
+       FORCES AND SYMMETRIZE               5.66
+       RESIDUE                             4.41
+       EQFORCE                             0.00
+ -------------------------  PARAVMEC CALCULATION DONE  -----------------------
+     ASPECT RATIO:    2.000
+             BETA:    0.000  (total)
+                      0.000  (poloidal)
+                      0.000  (toroidal)
+  TORIDAL CURRENT:    0.254223725404E-07
+     TORIDAL FLUX:    1.000
+           VOLUME:    0.039
+     MAJOR RADIUS:    0.200
+     MINOR RADIUS:    0.100
+       AXIS FIELD:   75.036
+    STORED ENERGY:    0.000000000000E+00
+  Iteration   Processor       Chi-Sq
+       1          0          1.221502017524E-002
+       3          2          8.616361941393E-003
+       2          1          1.033739314448E-002
+       4          3          7.051926565989E-003
+       5          2          5.644087018265E-003
+       6          1          4.392843298219E-003
+       7          3          3.298195405852E-003
+       8          2          2.360143341164E-003
+       9          1          1.578687104155E-003
+      10          3          9.538266948254E-004
+      11          2          4.855621131743E-004
+      12          1          1.738933592022E-004
+      13          3          1.882043290888E-005
+      14          2          2.034333429453E-005
+      15          1          1.784620633591E-004
+      16          3          4.931766201026E-004
+      17          2          9.644870045250E-004
+      18          1          1.592393216626E-003
+      19          3          2.376895256407E-003
+      20          2          3.317993123866E-003
+      21          1          4.415686819004E-003
+      22          3          5.669976341821E-003
+      23          2          7.080861692317E-003
+      24          1          8.648342870492E-003
+      25          3          1.037241987635E-002
+      26          2          1.225309270988E-002
+      27          1          1.429036137109E-002
+      28          3          1.648422585998E-002
+      29          2          1.883468617655E-002
+      30          1          2.134174232080E-002
+------- Outputing to map.dat --------
+ !!!!!  PARAMETER SPACE MAPPING DONE  !!!!!
+        See map.dat for data               
+----- STELLOPT DONE -----

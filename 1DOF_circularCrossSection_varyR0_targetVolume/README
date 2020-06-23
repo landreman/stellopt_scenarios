@@ -1,0 +1,14 @@
+This is a minimal scenario. There is only 1 independent variable, and only a single term in the objective function.
+The only code used is VMEC. There is no current or plasma pressure, i.e. the configuration is a vacuum field.
+
+The 1 independent variable is the mean major radius, RBC(0,0).
+
+The objective function is (V - V_target)^2, where V is the volume enclosed by the boundary, and V_target = 0.15 m^3.
+
+Since the volume can be computed from the boundary shape analytically, there is not really a need to include VMEC or any other equilibrium code in this optimization.
+
+As can be seen in plotObjectiveFunction.pdf, the objective function is smooth.
+
+There is one optimum, at RBC(0,0) = 0.7599088773175m. At this point, the objective function is 0. There are no local optima other than this global optimum.
+
+Even though there is only 1 degree of freedom, stellopt crashes if you try to run it using Levenberg–Marquardt with only 1 proc.

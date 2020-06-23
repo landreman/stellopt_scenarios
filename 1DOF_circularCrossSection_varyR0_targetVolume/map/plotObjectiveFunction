@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+print
+print "Add any arguments to save a PDF."
+
+import sys
+
+savePDF = len(sys.argv) > 1
+
+import numpy as np
+
+f = open('map.dat', 'r')
+lines = f.readlines()
+f.close()
+
+temp = lines[0].split()
+N = int(temp[2])
+#print temp, N
+
+Delta = np.zeros(N)
+objective_before_squaring = np.zeros(N)
+for j in range(N):
+    Delta[j] = float(lines[j+1])
+    objective_before_squaring[j] = float(lines[j+1+N])
+
+#print "Delta:",Delta
+#print "objective:",objective
+
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(5,7.1))
+fig.patch.set_facecolor('white')
+numRows=2
+numCols=1
+
+plt.subplot(numRows,numCols,1)
+plt.plot(Delta,objective_before_squaring,'.-r')
+plt.plot(Delta,0*Delta,':k')
+plt.xlabel('RBC(0,0) [m]')
+plt.ylabel('volume - volume_target [m$^3$]')
+
+plt.subplot(numRows,numCols,2)
+plt.plot(Delta,objective_before_squaring ** 2,'.-r')
+plt.xlabel('RBC(0,0) [m]')
+plt.ylabel('objective = (volume - volume_target)^2')
+
+plt.tight_layout()
+
+import os
+if savePDF:
+    print "Saving PDF"
+    plt.savefig(os.path.basename(__file__) + ".pdf")
+else:
+    plt.show()
