@@ -1,0 +1,110 @@
+#!/usr/bin/env python
+
+print
+print "Add any arguments to save a PDF."
+
+import sys
+
+savePDF = len(sys.argv) > 1
+
+import numpy as np
+
+f = open('map.dat', 'r')
+lines = f.readlines()
+f.close()
+
+temp = lines[0].split()
+N = int(temp[2])
+#print temp, N
+
+R0c = np.zeros((N,N))
+Z0s = np.zeros((N,N))
+objective1_before_squaring = np.zeros((N,N))
+objective2_before_squaring = np.zeros((N,N))
+index = -1
+for k in range(N):
+    for j in range(N):
+        index += 1
+        temp = lines[index+1].split()
+        R0c[j,k] = float(temp[0])
+        Z0s[j,k] = float(temp[1])
+        temp = lines[index+1+N*N].split()
+        objective1_before_squaring[j,k] = float(temp[0])
+        objective2_before_squaring[j,k] = float(temp[1])
+
+threshold = 1e+4
+mask = objective1_before_squaring>threshold
+objective1_before_squaring[mask] = np.nan
+objective2_before_squaring[mask] = np.nan
+
+print "R0c:",R0c
+print
+print "Z0s:",Z0s
+print
+print "objective1_before_squaring:",objective1_before_squaring
+print
+print "objective2_before_squaring:",objective2_before_squaring
+
+total_objective = (objective1_before_squaring) ** 2 + objective2_before_squaring ** 2
+
+#exit(0)
+
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(14,7))
+fig.patch.set_facecolor('white')
+numRows=2
+numCols=3
+numContours = 20;
+
+plt.subplot(numRows,numCols,1)
+plt.contour(R0c,Z0s,objective1_before_squaring,numContours)
+plt.colorbar()
+plt.contour(R0c,Z0s,objective1_before_squaring,[0],colors='k',linestyles='dashed',linewidths=3)
+plt.xlabel('R0c')
+plt.ylabel('Z0s')
+plt.title('volume - volume_target')
+
+plt.subplot(numRows,numCols,2)
+plt.contour(R0c,Z0s,objective2_before_squaring,numContours)
+plt.colorbar()
+plt.contour(R0c,Z0s,objective2_before_squaring,[0],colors='k',linestyles='dashed',linewidths=3)
+plt.xlabel('R0c')
+plt.ylabel('Z0s')
+plt.title('iota(0) - iota_target')
+
+plt.subplot(numRows,numCols,3)
+#contours = np.linspace(0,50,100)
+contours = 50
+plt.contour(R0c,Z0s,total_objective,contours)
+plt.colorbar()
+plt.xlabel('R0c')
+plt.ylabel('Z0s')
+plt.title('Total objective function')
+
+plt.subplot(numRows,numCols,4)
+contours = np.linspace(0,0.1,100)
+#contours = 50
+plt.contour(R0c,Z0s,total_objective,contours)
+plt.colorbar()
+plt.xlabel('R0c')
+plt.ylabel('Z0s')
+plt.title('Total objective function (different color scale)')
+
+plt.subplot(numRows,numCols,5)
+plt.scatter((objective1_before_squaring)**2, objective2_before_squaring**2,numContours)
+#plt.colorbar()
+plt.xlabel('volume term')
+plt.ylabel('iota term')
+plt.title('Tradeoff')
+#plt.xscale('log')
+#plt.xlim([1.0e-5,100])
+
+plt.tight_layout()
+
+import os
+if savePDF:
+    print "Saving PDF"
+    plt.savefig(os.path.basename(__file__) + ".pdf")
+else:
+    plt.show()
