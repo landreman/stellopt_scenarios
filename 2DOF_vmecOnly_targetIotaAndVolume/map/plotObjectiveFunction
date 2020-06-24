@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-print
-print "Add any arguments to save a PDF."
+print()
+print("Add any arguments to save a PDF.")
 
 import sys
 
@@ -37,13 +37,13 @@ mask = objective1_before_squaring>threshold
 objective1_before_squaring[mask] = np.nan
 objective2_before_squaring[mask] = np.nan
 
-print "R0c:",R0c
-print
-print "Z0s:",Z0s
-print
-print "objective1_before_squaring:",objective1_before_squaring
-print
-print "objective2_before_squaring:",objective2_before_squaring
+print("R0c:",R0c)
+print()
+print("Z0s:",Z0s)
+print()
+print("objective1_before_squaring:",objective1_before_squaring)
+print()
+print("objective2_before_squaring:",objective2_before_squaring)
 
 total_objective = (objective1_before_squaring) ** 2 + objective2_before_squaring ** 2
 
@@ -61,16 +61,16 @@ plt.subplot(numRows,numCols,1)
 plt.contour(R0c,Z0s,objective1_before_squaring,numContours)
 plt.colorbar()
 plt.contour(R0c,Z0s,objective1_before_squaring,[0],colors='k',linestyles='dashed',linewidths=3)
-plt.xlabel('R0c')
-plt.ylabel('Z0s')
+plt.xlabel('R0c(1,1)')
+plt.ylabel('Z0s(1,1)')
 plt.title('volume - volume_target')
 
 plt.subplot(numRows,numCols,2)
 plt.contour(R0c,Z0s,objective2_before_squaring,numContours)
 plt.colorbar()
 plt.contour(R0c,Z0s,objective2_before_squaring,[0],colors='k',linestyles='dashed',linewidths=3)
-plt.xlabel('R0c')
-plt.ylabel('Z0s')
+plt.xlabel('R0c(1,1)')
+plt.ylabel('Z0s(1,1)')
 plt.title('iota(0) - iota_target')
 
 plt.subplot(numRows,numCols,3)
@@ -78,17 +78,17 @@ plt.subplot(numRows,numCols,3)
 contours = 50
 plt.contour(R0c,Z0s,total_objective,contours)
 plt.colorbar()
-plt.xlabel('R0c')
-plt.ylabel('Z0s')
+plt.xlabel('R0c(1,1)')
+plt.ylabel('Z0s(1,1)')
 plt.title('Total objective function')
 
 plt.subplot(numRows,numCols,4)
-contours = np.linspace(0,0.1,100)
+contours = np.linspace(0,0.01,100)
 #contours = 50
 plt.contour(R0c,Z0s,total_objective,contours)
 plt.colorbar()
-plt.xlabel('R0c')
-plt.ylabel('Z0s')
+plt.xlabel('R0c(1,1)')
+plt.ylabel('Z0s(1,1)')
 plt.title('Total objective function (different color scale)')
 
 plt.subplot(numRows,numCols,5)
@@ -104,7 +104,7 @@ plt.tight_layout()
 
 import os
 if savePDF:
-    print "Saving PDF"
+    print("Saving PDF")
     plt.savefig(os.path.basename(__file__) + ".pdf")
 else:
     plt.show()
