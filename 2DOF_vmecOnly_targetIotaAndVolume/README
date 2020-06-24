@@ -1,0 +1,28 @@
+This is a scenario with 2 independent variables and 2 objectives.
+There is no current or plasma pressure, i.e. the configuration is a vacuum field.
+There is only a single code involved in computing the objective function: VMEC.
+It should be straightforward to repeat this calculation using a different vacuum-field
+code in place of VMEC.
+
+The 2 independent variables are RBC(1,1) and ZBS(1,1), which control the shape of the plasma boundary:
+R(phi) = 1 + 0.1 * cos(theta) + RBC(1,1) * cos(theta - 5 * phi),
+Z(phi) =     0.1 * sin(theta) + ZBS(1,1) * sin(theta - 5 * phi).
+
+The objective function is
+f = (iota - iota_target)^2 + (volume - volume_target)^2,
+where 
+iota is the rotational transform on the magnetic axis,
+iota_target = 0.41,
+volume_target = 0.15 m^3,
+and volume is the volume enclosed by the plasma boundary.
+
+As can be seen in plotObjectiveFunction.pdf, the objective function is smooth.
+The landscape of the total objective function has two long narrow valleys that are fairly straight.
+When either of the two input parameters is +/- 0.1m, the boundary surface becomes infinitesmally thin, so VMEC is sure to fail.
+In practice VMEC begins to struggle when RBC(1,1) or ZBS(1,1) approaches 0.08m, so it is convenient to include bound constraints
+to stay away from these physical barriers in parameter space.
+
+The optimum occurs at RBC(1,1) = 0.0313066948 m and ZBS(1,0) = -0.031232391 m.
+At this point, iota(0) = 0.4114567, volume=0.178091, and the total objective function is 7.912501330E-04.
+There is a symmetric optimum at RBC(1,0) = -0.0313066948 m and ZBS(1,0) = 0.031232391 m.
+There are no other local optima within the non-pathological region bounded by +/- 0.1m.
