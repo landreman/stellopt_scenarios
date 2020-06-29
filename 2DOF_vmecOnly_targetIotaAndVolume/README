@@ -22,7 +22,7 @@ When either of the two input parameters is +/- 0.1m, the boundary surface become
 In practice VMEC begins to struggle when RBC(1,1) or ZBS(1,1) approaches 0.08m, so it is convenient to include bound constraints
 to stay away from these physical barriers in parameter space.
 
-The optimum occurs at RBC(1,1) = 0.0313066948 m and ZBS(1,0) = -0.031232391 m.
+The optimum occurs at RBC(1,1) = 0.0313066948 m and ZBS(1,1) = -0.031232391 m.
 At this point, iota(0) = 0.4114567, volume=0.178091, and the total objective function is 7.912501330E-04.
-There is a symmetric optimum at RBC(1,0) = -0.0313066948 m and ZBS(1,0) = 0.031232391 m.
+There is a symmetric optimum at RBC(1,0) = -0.0313066948 m and ZBS(1,1) = 0.031232391 m.
 There are no other local optima within the non-pathological region bounded by +/- 0.1m.
