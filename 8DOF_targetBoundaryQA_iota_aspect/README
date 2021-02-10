@@ -1,0 +1,74 @@
+This is a 2-field-period vacuum configuration, constrained to have
+elliptical cross-section. We optimize for quasi-axisymmetry, also
+targeting iota so the optimum is not true axisymmetry, and also
+targeting the aspect ratio so the aspect ratio does not increase. If
+more Fourier modes were allowed in the boundary shape, decent
+quasi-axisymmetry could be achieved. However, here the Fourier content
+is kept small so the parameter space is only 8-dimensional.
+
+Quasisymmetry is targeted at the boundary. In a more serious design,
+quasisymmetry would probably be targeted at an interior surface
+instead, but the boundary is targeted instead here so this case could
+be reproduced with a vacuum Laplace solver instead of an MHD
+equilibrium code. More precisely, quasisymmetry is evaluated at the
+outermost half-grid surface, with ns=51 points in the full grid, so s
+= 0.99000000.
+
+Iota is targeted at the edge, with a target value of -0.495, to avoid
+the resonance at -0.5.  We do not attempt to control magnetic shear
+here, since this is hard to do without more poloidal modes in the
+boundary shape.
+
+For this scenario, the quasisymmetry objective has no s-dependent or
+m-dependent weighting of the Boozer amplitudes.  In stellopt, this is
+achieved by setting sigma < 0.
+
+The objective function is:
+
+f = (aspect - 6)^2 + (iota + 0.495)^2 + sum_{m,n}(B_{m,n} / B0)^2
+
+where the sum is over all quasisymmetry-breaking modes, B_{m,n} are
+the amplitudes of |B| in Boozer coordinates. The normalizing field is
+
+B0 = sqrt(\sum_{m,n} B_{m,n}^2)
+
+where now the sum includes only quasisymmetric modes.
+
+Note that `vmec_axis_option="vmec"` in the stellopt cases. This
+ensures that the same initialization of the magnetic axis is used in
+stellopt and simsopt. If the axis is initialized differently, the
+Boozer harmonics turn out a little different.
+
+The parameter space is
+
+rc(0, 1) 
+rc(1,-1) 
+rc(1, 0) 
+rc(1, 1) 
+zs(0, 1) 
+zs(1,-1) 
+zs(1, 0) 
+zs(1, 1) 
+
+where m comes before n (opposite to stellopt/vmec notation).
+
+At the initial condition, B0 = 8.3134117, f = 1.3700911, iota_edge =
+-0.06564577, and aspect ratio = 4.91473.  See
+stellopt_1iter/stellopt.nfp2_QA for the initial Boozer amplitudes.
+
+The optimum found is
+
+rc(0, 1) =  0.11673911
+rc(1,-1) = -0.11864656
+rc(1, 0) =  0.1815689
+rc(1, 1) =  0.02219165
+zs(0, 1) =  0.1483621
+zs(1,-1) =  0.09577609
+zs(1, 0) =  0.21341956
+zs(1, 1) =  0.01524933
+
+f = 0.00098809
+iota_edge = -0.4932136
+aspect ratio = 6.000286
+
+For images of the optimum configuration, see the simsopt directory.

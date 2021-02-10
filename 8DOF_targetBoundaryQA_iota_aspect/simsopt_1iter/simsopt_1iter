@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+import logging
+import numpy as np
+import simsopt as so
+
+logging.basicConfig(level=logging.INFO)
+
+vmec = so.Vmec("input.nfp2_QA")
+surf = vmec.boundary
+
+# Define parameter space:
+surf.all_fixed()
+surf.fixed_range(mmin=0, mmax=1, nmin=-1, nmax=1, fixed=False)
+surf.set_fixed("rc(0,0)") # Major radius
+
+# Define objective function:
+boozer = so.Boozer(vmec, mpol=32, ntor=16)
+qs = so.Quasisymmetry(boozer,
+                      1, # Radius to target
+                      1, 0, # (M, N) you want in |B|
+                      normalization="symmetric",
+                      weight="even")
+
+# Define objective function
+prob = so.LeastSquaresProblem([(vmec.aspect, 6, 1),
+                               (vmec.iota_edge, -0.495, 1),
+                               (qs, 0, 1)])
+
+np.set_printoptions(linewidth=600)
+residuals = prob.f()
+vals = prob.dofs.f()
+print("Initial values before shifting and scaling:  ", vals[:10])
+print("Initial residuals after shifting and scaling:", residuals[:10])
+print("size of residuals:", len(residuals))
+print("Initial objective function:", prob.objective())
+print("Parameter space:")
+for name in prob.dofs.names:
+    print(name)
+print("Initial state vector:", prob.x)
+print("Initial iota at edge:", vmec.iota_edge())
+print("Initial aspect ratio:", vmec.aspect())
+
+exit(0)
+
+so.least_squares_serial_solve(prob)
+
+residuals = prob.f()
+vals = prob.dofs.f()
+print("Final values before shifting and scaling:  ", vals[:10])
+print("Final residuals after shifting and scaling:", residuals[:10])
+print("Final objective function:", prob.objective())
+print("Final state vector:", prob.x)
+print("Final iota on axis:", vmec.iota_axis())
