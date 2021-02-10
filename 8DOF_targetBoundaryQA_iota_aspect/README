@@ -56,7 +56,9 @@ At the initial condition, B0 = 8.3134117, f = 1.3700911, iota_edge =
 -0.06564577, and aspect ratio = 4.91473.  See
 stellopt_1iter/stellopt.nfp2_QA for the initial Boozer amplitudes.
 
-The optimum found is
+To about 3 digits, the same optimum is found by stellopt's native
+Levenberg-Marquardt algorithm, stellopt with GSL's Levenberg-Marquardt
+algorithm via MANGO, and simsopt. The simsopt optimum values are
 
 rc(0, 1) =  0.11673911
 rc(1,-1) = -0.11864656
