@@ -34,6 +34,14 @@ B0 = sqrt(\sum_{m,n} B_{m,n}^2)
 
 where now the sum includes only quasisymmetric modes.
 
+The number of least-squares terms in the objective function is 1042 in
+stellopt. This large number is a function of the Fourier resolution in
+Boozer coordinates. The number of residuals in simsopt is slightly
+smaller, 1010. The difference is due to the fact that stellopt
+includes terms corresponding to all the Boozer modes, not just the
+non-symmetric ones, with the symmetric modes set to 0; simsopt
+includes only the non-symmetric modes in the residual vector.
+
 Note that `vmec_axis_option="vmec"` in the stellopt cases. This
 ensures that the same initialization of the magnetic axis is used in
 stellopt and simsopt. If the axis is initialized differently, the
