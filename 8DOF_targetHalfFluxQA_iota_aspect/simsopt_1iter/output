@@ -1,0 +1,113 @@
+INFO:[0]simsopt.mhd.vmec:Initializing a VMEC object from file: input.nfp2_QA
+INFO:[0]simsopt.core.surface:Allocating SurfaceRZFourier
+INFO:simsopt.mhd.boozer:Adding entries to Boozer registry: {0.5}
+INFO:[0]simsopt.core.least_squares_problem:residuals() called with x=None
+/Users/mattland/simsopt-landreman/simsopt/src/simsopt/core/least_squares_problem.py:134: UserWarning: Supplied a null object as state vector. Ignoring it
+  warnings.warn("Supplied a null object as state vector. Ignoring it")
+INFO:[0]simsopt.mhd.vmec:Preparing to run VMEC.
+INFO:[0]simsopt.mhd.vmec:Running VMEC.
+ runvmec called with ictrl_flag=          35
+ allocated(ireflect)= F
+ nzeta=          12  ns=           0
+ runvmec called with ictrl_flag=          45
+
+  NS =   16 NO. FOURIER MODES =   41 FTOLV =  1.000E-16 NITER =    600
+  PROCESSOR COUNT - RADIAL:    1
+ INITIAL JACOBIAN CHANGED SIGN!
+ TRYING TO IMPROVE INITIAL MAGNETIC AXIS GUESS
+  ---- Improved AXIS Guess ----
+      RAXIS_CC =   0.99999999999999978       0.14999999999999977       -1.3084103822364790E-017  -4.0902451112589528E-016  -3.9252311467094373E-016
+      ZAXIS_CS =   -0.0000000000000000       0.14999999999999994        2.4532694666933983E-017  -1.1448590844569191E-017   3.2710259555911976E-018
+  -----------------------------
+
+  ITER    FSQR      FSQZ      FSQL    RAX(v=0)    DELT       WMHD
+
+    1  1.65E-02  3.06E-03  9.85E-03  1.150E+00  9.00E-01  2.6377E+01
+  200  2.59E-11  7.53E-12  1.03E-11  1.136E+00  9.00E-01  2.6098E+01
+  400  6.71E-12  1.31E-12  2.39E-12  1.136E+00  9.00E-01  2.6098E+01
+  600  1.31E-12  9.61E-14  6.24E-13  1.134E+00  9.00E-01  2.6098E+01
+
+  NS =   50 NO. FOURIER MODES =   41 FTOLV =  1.000E-11 NITER =   4000
+  PROCESSOR COUNT - RADIAL:    1
+
+  ITER    FSQR      FSQZ      FSQL    RAX(v=0)    DELT       WMHD
+
+    1  6.23E-04  1.83E-04  7.13E-08  1.134E+00  9.00E-01  2.6098E+01
+  200  7.65E-11  3.56E-11  9.47E-13  1.134E+00  9.00E-01  2.6098E+01
+  400  1.07E-11  4.73E-12  4.12E-13  1.133E+00  9.00E-01  2.6098E+01
+  429  9.64E-12  4.54E-12  3.48E-13  1.133E+00  9.00E-01  2.6098E+01
+INFO:[0]simsopt.mhd.vmec:VMEC run complete. Now loading output.
+INFO:[0]simsopt.mhd.vmec_core:Attempting to read file /Users/mattland/stellopt_scenarios/8DOF_targetHalfFluxQA_iota_aspect/simsopt_1iter/wout_nfp2_QA_000_000001.nc
+ allocated(ireflect)= T
+ nzeta=          12  ns=          50
+
+ EXECUTION TERMINATED NORMALLY
+
+ FILE : nfp2_QA_000_000001
+ NUMBER OF JACOBIAN RESETS =    0
+
+    TOTAL COMPUTATIONAL TIME (SEC)         1.64
+    TIME TO INPUT/OUTPUT                   0.01
+       READ IN DATA                        0.00
+       WRITE OUT DATA TO WOUT              0.01
+    TIME IN FUNCT3D                        1.61
+       BCOVAR FIELDS                       0.27
+       FOURIER TRANSFORM                   0.34
+       INVERSE FOURIER TRANSFORM           0.21
+       FORCES AND SYMMETRIZE               0.35
+       RESIDUE                             0.30
+       EQFORCE                             0.00
+INFO:[0]simsopt.mhd.vmec_core:Successufully load VMEC results from /Users/mattland/stellopt_scenarios/8DOF_targetHalfFluxQA_iota_aspect/simsopt_1iter/wout_nfp2_QA_000_000001.nc
+INFO:[0]simsopt.mhd.vmec:Done loading VMEC output.
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:simsopt.mhd.boozer:Preparing to run Boozer transformation. Registry:[0.5]
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:simsopt.mhd.boozer:compute_surfs=[24]
+INFO:simsopt.mhd.boozer:s_to_index_all_surfs={0.5: 24}
+INFO:simsopt.mhd.boozer:s_to_index={0.5: 0}
+Read ns=50, mpol=5, ntor=4, mnmax=41, mnmax_nyq=111
+rmnc, increasing ns index: 0.989373 0.989545 0.989719 0.989893
+rmnc, ncreasing mnmax index: 0.989373 0.142629 0.000982543 -6.67365e-05
+INFO:simsopt.mhd.boozer:About to call booz_xform.Booz_xform.run().
+compute_surfs (0-based indices):  24
+Initializing with mboz=32, nboz=16
+nu = 130, nv = 66
+             OUTBOARD (theta=0)        SURFACE         INBOARD (theta=pi)
+------------------------------------------------------------------------------
+zeta    |B|input  |B|Boozer    Error            |B|input  |B|Boozer    Error
+
+  0    6.721e+00  6.721e+00  8.498e-14   24    9.595e+00  9.595e+00  1.810e-09
+ pi    7.726e+00  7.726e+00  1.059e-13         8.528e+00  8.528e+00  4.457e-09
+INFO:simsopt.mhd.boozer:Returned from calling booz_xform.Booz_xform.run().
+INFO:simsopt.mhd.boozer:For s=0.5, bnorm=8.207645681662745
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:simsopt.mhd.boozer:Boozer.run() called but no need to re-run Boozer transformation.
+INFO:simsopt.mhd.boozer:For s=0.5, bnorm=8.207645681662745
+INFO:[0]simsopt.core.least_squares_problem:objective() called with x=None
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:simsopt.mhd.boozer:Boozer.run() called but no need to re-run Boozer transformation.
+INFO:simsopt.mhd.boozer:For s=0.5, bnorm=8.207645681662745
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+INFO:[0]simsopt.mhd.vmec:run() called but no need to re-run VMEC.
+mnmax: 41  len(xm): 41  len(xn): 41
+mnmax_nyq: 111  len(xm_nyq): 111  len(xn_nyq): 111
+Initial values before shifting and scaling:   [ 4.91473187e+00 -6.56453698e-02 -6.35985425e-03 -6.02579372e-04  3.53969677e-04 -9.89973924e-05  2.37729704e-05 -5.38964603e-06  1.21224310e-06 -2.80110167e-07]
+Initial residuals after shifting and scaling: [-1.08526813e+00  4.29354630e-01 -6.35985425e-03 -6.02579372e-04  3.53969677e-04 -9.89973924e-05  2.37729704e-05 -5.38964603e-06  1.21224310e-06 -2.80110167e-07]
+size of residuals: 1010
+Initial objective function: 1.3661282491297364
+Parameter space:
+rc(0,1) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+rc(1,-1) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+rc(1,0) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+rc(1,1) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+zs(0,1) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+zs(1,-1) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+zs(1,0) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+zs(1,1) of SurfaceRZFourier 0x10cecee80 (nfp=2, stelsym=True, mpol=5, ntor=4)
+Initial state vector: [0.15  0.    0.2   0.    0.15  0.    0.207 0.   ]
+Initial iota at edge: -0.06564536975933663
+Initial aspect ratio: 4.914731871829906
+ Fortran mnmax:          41  len(xm):          41  len(xn):          41
+ Fortran mnmax_nyq:         111  len(xm_nyq):         111  len(xn_nyq):         111

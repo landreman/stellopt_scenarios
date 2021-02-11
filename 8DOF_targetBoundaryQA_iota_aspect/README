@@ -14,6 +14,11 @@ equilibrium code. More precisely, quasisymmetry is evaluated at the
 outermost half-grid surface, with ns=51 points in the full grid, so s
 = 0.99000000.
 
+This example is very similar to the 8DOF_targetHalfFluxQA_iota_aspect
+scenario. There are two differences: quasisymmetry is targeted at the
+boundary instead of at the half flux surface, and ns is 51 instead of
+50.
+
 Iota is targeted at the edge, with a target value of -0.495, to avoid
 the resonance at -0.5.  We do not attempt to control magnetic shear
 here, since this is hard to do without more poloidal modes in the
