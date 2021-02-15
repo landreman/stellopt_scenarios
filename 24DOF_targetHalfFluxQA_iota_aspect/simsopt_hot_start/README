@@ -1,0 +1,7 @@
+In this directory, the initial condition is the final run
+(wout_nfp2_QA_000_000738.nc) of
+24DOF_targetHalfFluxQA_iota_aspect_medIota/simsopt_cold_start which is
+a scenario very similar to this one but targeting iota = -0.475
+instead of -0.47.  The number of Fourier modes was the same. For this
+initial condition, the optimizer finds a good optimum, one with
+positive shear.
