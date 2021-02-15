@@ -1,0 +1,6 @@
+In this directory, the initial condition is the final run
+(wout_nfp2_QA_000_000212.nc) of the
+8DOF_targetHalfFluxQA_iota_aspect/simsopt example. That example had a
+similar objective function (though the target value of iota was
+slightly different) and the boundary surface was constrained to have
+fewer Fourier modes. Stellopt finds a good optimum.

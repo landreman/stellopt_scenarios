@@ -1,0 +1,3 @@
+In this directory, the initial condition has circular cross
+section. Stellopt gets stuck in a bad region of parameter space where
+the boundary has cusps.
