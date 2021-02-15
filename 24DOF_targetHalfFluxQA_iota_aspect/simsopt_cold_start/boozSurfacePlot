@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.io import netcdf
+
+filename = 'boozmn_nfp2_QA_000_001720.nc'
+print("About to try loading file ",filename)
+f = netcdf.netcdf_file(filename,mode='r',mmap=False)
+
+phi = f.variables['phi_b'][()]
+ns_b = f.variables['ns_b'][()]
+nfp = f.variables['nfp_b'][()]
+ixn = f.variables['ixn_b'][()]
+ixm = f.variables['ixm_b'][()]
+bmnc = f.variables['bmnc_b'][()]
+jlist = f.variables['jlist'][()]
+f.close()
+nmodes = len(ixn)
+
+index = list(jlist).index(24 + 2)
+
+ntheta = 50
+nphi = 90
+
+theta1d = np.linspace(0, 2 * np.pi, ntheta)
+phi1d = np.linspace(0, 2 * np.pi / nfp, nphi)
+phi, theta = np.meshgrid(phi1d, theta1d)
+
+print('bmnc.shape:', bmnc.shape)
+
+B = np.zeros_like(phi)
+for jmn in range(len(ixm)):
+    m = ixm[jmn]
+    n = ixn[jmn]
+    angle = m * theta - n * phi
+    B += bmnc[index, jmn] * np.cos(angle)
+
+B /= bmnc[index, 0]
+
+fig = plt.figure()
+plt.rcParams.update({'font.size': 18})
+
+plt.contourf(phi, theta, B, 25)
+ticks = np.arange(0.94, 1.08, 0.02)
+print('ticks:', ticks)
+cbar = plt.colorbar(ticks=ticks)
+#cbar.set_ticks(np.linspace(0.94, 1.08, 0.02))
+plt.xlabel(r'Boozer toroidal angle $\varphi$')
+plt.ylabel(r'Boozer poloidal angle $\theta$')
+plt.title('|B| on the $s=0.5$ surface')
+
+plt.tight_layout()
+plt.show()
+

@@ -1,0 +1,103 @@
+This is a 2-field-period vacuum configuration. We optimize for
+quasi-axisymmetry, also targeting iota so the optimum is not true
+axisymmetry, and also targeting the aspect ratio so the aspect ratio
+does not increase.  No attempt is made to control magnetic shear.  The
+parameter space is the Fourier RBC/ZBS coefficients of the boundary
+surface, keeping poloidal modes up to m <= 2 and toroidal modes up to
+|n| < 2.  This is a relatively small number of modes, so the level of
+quasisymmetry obtained is ok but not spectacular, while the size of
+the parameter space is not too great.
+
+Unlike the lower-dimensional problems, the optimum found for this
+problem seems sensitive to the initial condition. In some cases with a
+"cold start", the optimizer can get stuck in a bad region of parameter
+space where the boundary surface has cusps. For other algorithms and
+initial conditions, optima are found that meet the desired objectives
+well, but the results can have a range of magnetic shear profiles.
+This behavior suggests there is a valley in parameter space, with a
+range of optima along the bottom of the valley. It is likely that
+adding one or more additional terms to the objective function, such as
+iota on axis to control magnetic shear, would remove this degeneracy.
+
+Quasisymmetry is targeted at the surface s=0.5. Since ns is even,
+there is a half-mesh surface exactly at s=0.5.
+
+This example is very similar to the 8DOF_targetBoundaryQA_iota_aspect
+scenario. There are two differences: quasisymmetry is targeted at half
+flux instead of the boundary, and ns is 50 instead of 51.
+
+Iota is targeted at the edge, with a target value of -0.47, to avoid
+the resonance at -0.5.  The objective function does not attempt to
+control magnetic shear.
+
+For this scenario, the quasisymmetry objective has no s-dependent or
+m-dependent weighting of the Boozer amplitudes.  In stellopt, this is
+achieved by setting sigma < 0.
+
+The objective function is:
+
+f = (aspect - 6)^2 + (iota + 0.47)^2 + sum_{m,n}(B_{m,n} / B0)^2
+
+where the sum is over all quasisymmetry-breaking modes, B_{m,n} are
+the amplitudes of |B| in Boozer coordinates. The normalizing field is
+
+B0 = sqrt(\sum_{m,n} B_{m,n}^2)
+
+where now the sum includes only quasisymmetric modes.
+
+The number of least-squares terms in the objective function is 1042 in
+stellopt. This large number is a function of the Fourier resolution in
+Boozer coordinates. The number of residuals in simsopt is slightly
+smaller, 1010. The difference is due to the fact that stellopt
+includes terms corresponding to all the Boozer modes, not just the
+non-symmetric ones, with the symmetric modes set to 0; simsopt
+includes only the non-symmetric modes in the residual vector.
+
+Note that `vmec_axis_option="vmec"` in the stellopt cases. This
+ensures that the same initialization of the magnetic axis is used in
+stellopt and simsopt. If the axis is initialized differently, the
+Boozer harmonics turn out a little different.
+
+The parameter space has 24 dimensions:
+
+rc(0,1)
+rc(0,2)
+rc(1,-2)
+rc(1,-1)
+rc(1,0)
+rc(1,1)
+rc(1,2)
+rc(2,-2)
+rc(2,-1)
+rc(2,0)
+rc(2,1)
+rc(2,2)
+zs(0,1)
+zs(0,2)
+zs(1,-2)
+zs(1,-1)
+zs(1,0)
+zs(1,1)
+zs(1,2)
+zs(2,-2)
+zs(2,-1)
+zs(2,0)
+zs(2,1)
+zs(2,2)
+
+where m comes before n (opposite to stellopt/vmec notation). Note that
+the order of the degrees of freedom is not the same in stellopt and
+simsopt.
+
+The "*_1iter" and "*_cold_start" directories for this example are
+initialized with a circular-cross-section boundary shape, with rc(0,1)
+and zs(0,1) set to a positive value (0.15) to provide some rotational
+transform.  At this initial condition, B0 = 8.20764568, f = 1.3452855,
+iota_edge = -0.06564537, and aspect ratio = 4.91473187.  See
+stellopt_1iter/stellopt.nfp2_QA for the initial Boozer amplitudes.
+
+As mentioned above, different optima are found depending on the
+initial condition and optimization algorithm. See each subdirectory
+for details of the optimum found for that code, algorithm, and initial
+condition.
+
