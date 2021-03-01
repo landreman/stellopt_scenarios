@@ -8,12 +8,12 @@ mpi = so.MpiPartition(9)
 # Initialize a VMEC object:
 vmec = so.Vmec("input.nfp2_QA", mpi=mpi)
 
-# Define parameter space:
+# Define parameter space for optimization:
 vmec.boundary.all_fixed()
 vmec.boundary.fixed_range(mmin=0, mmax=1, nmin=-1, nmax=1, fixed=False)
 vmec.boundary.set_fixed("rc(0,0)") # Major radius
 
-# Define objective function:
+# Set up the quasisymmetry term in the objective function:
 boozer = so.Boozer(vmec, mpol=32, ntor=16)
 qs = so.Quasisymmetry(boozer,
                       0.5, # Radius to target. Could be a list.
@@ -21,14 +21,15 @@ qs = so.Quasisymmetry(boozer,
                       normalization="symmetric", # Or "B00"
                       weight="even") # Or "stellopt", "stellopt_ornl"
 
-# Define objective function
+# Define the objective function:
 prob = so.LeastSquaresProblem([(vmec.aspect, 6, 1),
                                (vmec.iota_edge, -0.495, 1),
                                (qs, 0, 1)])
 
-# Solve, using parallelized finite difference gradients:
+# Optimize, using parallelized finite difference gradients:
 so.least_squares_mpi_solve(prob, mpi, grad=True)
 
+# Print info about the optimum:
 residuals = prob.f()
 vals = prob.dofs.f()
 if mpi.proc0_world:
